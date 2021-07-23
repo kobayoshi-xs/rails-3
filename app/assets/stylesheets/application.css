@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+body {
+
+}
+
+.pote-share {
+  display: flex;
+  justify-content: space-between;;
+  background-color: #00aaff;
+}
+
+.title {
+  color: #fff;
+}
+
+.user {
+  display: flex;
+}
+
+.user h3 {
+  margin: 20px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #00aaff;
+  width: 100%;
+}
+
+footer p {
+  text-align: center;
+  color: #fff;
+}
