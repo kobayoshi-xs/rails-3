@@ -1,0 +1,34 @@
+<%= form_with(model: @reservation, url: item_reservations_reservation_params_cfm_path(@results.id),  method: :post, local:true) do |f| %>
+  <div class = "room-info">
+      <ul class = "info-area">
+        <li><%= image_tag @items.image.thumb.url %></li>
+          <span class = "info-span">
+            <li><%= @items.roomname %></li>
+            <li><%= @items.address %></li>
+              <span class = "info-span">
+                <li><%= @items.introduction%></li>
+              </span>
+          </span>
+      </ul>
+    <div class = "room-reservation">
+      <ul class = "reservation-area">
+        <li>¥<%= @items.cost %>/日</li>
+        <li>
+          <span><%= f.label :start_date, "開始日" %></span>
+          <span><%= f.date_field :start_date %></span>
+        </li>
+        <li>
+          <span><%= f.label :end_date, "終了日" %></span>
+          <span><%= f.date_field :end_date %></span>
+        </li>
+        <li>
+          <span><%= f.label :count, "人数" %></span>
+          <span><%= f.number_field :count %></span>
+        </li>
+      </ul>
+
+      <div class = "reservation-button">
+        <%= f.submit "この条件で予約する" %>
+    </div>
+  </div>
+<% end %>

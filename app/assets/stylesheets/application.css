@@ -13,3 +13,70 @@
  *= require_tree .
  *= require_self
  */
+body {
+
+}
+
+.pote-share {
+  display: flex;
+  height: 110px;
+  justify-content: space-between;;
+  background-color: #00aaff;
+}
+
+.title {
+  color: #fff;
+}
+
+.user {
+  display: flex;
+}
+
+.user h3 {
+  margin: 20px;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  border: black;
+}
+
+.dropdwn {
+  margin: 0;
+}
+
+#dropdwn_menu  {
+  display: none;
+  border: 1px solid black;
+  background-color: #ddd;
+}
+
+.btn {
+  margin-right: 80px;
+}
+
+.menuList {
+  text-decoration: none;
+  color: #000;
+}
+
+.container {
+  position: relative;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #00aaff;
+  width: 100%;
+}
+
+footer p {
+  text-align: center;
+  color: #fff;
+}

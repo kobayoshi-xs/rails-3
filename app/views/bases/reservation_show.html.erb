@@ -1,0 +1,25 @@
+<div class = "reserve-list">
+  <h3>予約情報一覧</h3>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>合計料金</th>
+        <th>開始日</th>
+        <th>終了日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reserve| %>
+        <tr>
+          <td><%= reserve.roomname %></td>
+          <td><%= reserve.introduction%></td>
+          <td><%= reserve.total_price %></td>
+          <td><%= reserve.start_date.to_s(:datetime_jp) %></td>
+          <td><%= reserve.end_date.to_s(:datetime_jp) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</div>

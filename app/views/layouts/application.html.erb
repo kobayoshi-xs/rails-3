@@ -11,6 +11,52 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  <div class="container">
+    <header class='pote-share'>
+      <div class='title-search-era'>
+        <h3 class="title">Pote Share</h3>
+      </div>
+      <%= render "shared/search" %>
+      <div class='user'>
+        <% if user_signed_in? %>
+          <ul class='dropdwn'>
+            <% if current_user.image? %>
+              <%= current_user.name %>
+              <li><button type="button" class="btn"><%= image_tag current_user.image.thumb.url, class: 'icon icon-menu' %></button>
+                <ul id='dropdwn_menu'>
+                  <li><%= link_to "ルーム登録", bases_user_register_path(current_user), class: "menuList" %></li>
+                  <li><%= link_to "予約済みルーム一覧", bases_reservation_show_path, class: "menuList"  %></li>
+                  <li><%= link_to "登録済みルーム一覧", bases_user_register_show_path(current_user), class: "menuList" %></li>
+                  <li><%= link_to "設定",basis_path(current_user), class: "menuList" %></li>
+                  <li><%= link_to "ログアウト",:destroy_user_session, method: :delete, class: "menuList" %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li><button type="button" id="btn"><%= image_tag "/assets/default1.jpg", class: 'icon icon-menu', :size => '100x100'  %></button>
+                <ul id='dropdwn_menu'>
+                  <li><%= link_to "ルーム登録", bases_user_register_path(current_user), class: "menuList" %></li>
+                  <li><%= link_to "予約済みルーム一覧", bases_reservation_show_path, class: "menuList" %></li>
+                  <li><%= link_to "登録済みルーム一覧", bases_user_register_show_path(current_user), class: "menuList" %></li>
+                  <li><%= link_to "設定",basis_path(current_user), class: "menuList" %></li>
+                  <li><%= link_to "ログアウト",:destroy_user_session, method: :delete, class: "menuList" %></li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <h3><%= button_to "ログイン", :new_user_session, method: :get %></h3>
+          <h3><%= button_to "登録する", :new_user_registration, method: :get %></h3>
+        <% end %>
+      </div>
+    </header>
+
     <%= yield %>
+
+    <footer class='pote-share-footer'>
+      <p><small>&copy; 2021 POTEPAN</small></p>
+    </footer>
+  </div>
   </body>
 </html>

@@ -1,0 +1,12 @@
+<div class="pote-search">
+  <%= search_form_for @q, url: search_items_path, method: :get do |f| %>
+    <ul class="search-ul">
+      <li class="search-li"><%= f.search_field :address_cont, :placeholder => "エリア検索" %></li>
+    </ul>
+  <% end %>
+  <%= search_form_for @q, url: search_items_path, method: :get do |f| %>
+    <ul class="search-ul">
+      <li class="search-li"><%= f.search_field :roomname_cont, :placeholder => "ルーム名検索" %></li>
+    </ul>
+  <% end %>
+</div>
