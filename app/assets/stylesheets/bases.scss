@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .icon {
   border-radius: 50%;
+  width: auto;
+  overflow: hidden;
 }
 
 .shared {
@@ -21,4 +23,12 @@
 ul {
   padding: 0;
   list-style: none;
+}
+
+.room-register {
+  text-align: center;
+}
+
+.field {
+
 }

@@ -1,0 +1,29 @@
+<h3>検索結果</h3>
+
+<div class = "items-show">
+  <h3>ルーム一覧</h3>
+  <% @results.each do |item| %>
+    <%= link_to new_item_reservation_path(item.id), method: :get do %>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>ルーム画像</th>
+            <th>ルーム名</th>
+            <th>ルーム紹介</th>
+            <th>料金</th>
+            <th>作成日</th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr>
+            <td><%= image_tag item.image.thumb.url %></td>
+            <td><%= item.roomname %></td>
+            <td><%= item.introduction%></td>
+            <td>¥<%= item.cost %>/日</td>
+            <td><%= item.created_at.to_s(:datetime_jp) %></td>
+          </tr>
+      </tbody>
+      </table>
+    <% end %>
+  <% end %>
+</div>

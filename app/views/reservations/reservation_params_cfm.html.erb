@@ -1,0 +1,33 @@
+<h3>予約内容確認</h3>
+<ul>
+  <li>¥<%= @reservation.cost %>/日</li>
+  <li>開始日 :<%= @reservation.start_date.to_s(:datetime_jp) %></li>
+  <li>終了日 :<%= @reservation.end_date.to_s(:datetime_jp) %></li>
+  <li>人数 :<%= @reservation.count %></li>
+  <li>合計金額 :¥<%= @price = @reservation.total_price_element * @items.cost %>円</li>
+</ul>
+
+<%= form_with(model: @reservation, url: item_reservations_path, method: :post, local:true) do |f| %>
+  <%= f.hidden_field :start_date %>
+  <%= f.hidden_field :end_date %>
+  <%= f.hidden_field :count %>
+  <%= f.hidden_field :total_price, value: @price %>
+  <%= f.hidden_field :image, value: @items.image %>
+  <%= f.hidden_field :roomname %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :introduction %>
+  <%= f.hidden_field :cost %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :item_id, value: @items.id %>
+  <%= f.submit '予約を確定' %>
+<% end %>
+
+<%= form_with(model: @reservation, url: item_reservations_reservation_params_back_path, method: :post, local:true) do |f| %>
+  <%= f.hidden_field :start_date %>
+  <%= f.hidden_field :end_date %>
+  <%= f.hidden_field :count %>
+  <%= f.hidden_field :total_price, value: @price %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :item_id, value: @items.id %>
+  <%= f.submit '入力画面に戻る' %>
+<% end %>

@@ -1,0 +1,35 @@
+<div class = "items-show">
+  <h3>登録済みルーム一覧</h3>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>料金</th>
+        <th>作成日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= image_tag item.image.thumb.url %></td>
+          <td><%= item.roomname %></td>
+          <td><%= item.introduction%></td>
+          <td>¥<%= item.cost %>/日</td>
+          <td><%= item.created_at.to_s(:datetime_jp) %></td>
+          <td><%= form_with(model: @items, url: edit_basis_path(item.id), method: :get, local:true) do |f| %>
+                <%= f.hidden_field :image %>
+                <%= f.hidden_field :roomname %>
+                <%= f.hidden_field :introduction %>
+                <%= f.hidden_field :cost %>
+                <%= f.hidden_field :address %>
+                <%= f.submit '編集' %>
+              <% end %></td>
+          <td><%= button_to "削除", basis_path(item.id), method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

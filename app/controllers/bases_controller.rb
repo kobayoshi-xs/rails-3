@@ -1,9 +1,11 @@
 class BasesController < ApplicationController
   before_action :authenticate_user!
-  #before_action :user_profile, only: [:user_profile]
+  before_action :user_register_show, only: [:show, :update, :user_profile, :user_register]
 
   def index
     @users = User.all
+    @items = Item.all
+    @reservations = Reservation.all
   end
 
   def new
@@ -11,6 +13,7 @@ class BasesController < ApplicationController
   end
 
   def create
+
   end
 
   def show　
@@ -35,9 +38,30 @@ class BasesController < ApplicationController
     @user = current_user
   end
 
+  def user_register
+    @user = current_user
+    @item = Item.new
+  end
+
+  def user_register_show
+    @user = current_user
+    @items = @user.items
+  end
+
   def edit
+    @user = current_user
+    @items = Item.find(params[:id])
   end
 
   def destroy
+    @user = current_user
+    @items = Item.find(params[:id])
+    @items.destroy
+    flash[:notice]="ルーム登録を削除しました"
+  end
+
+  def reservation_show
+    @user = current_user
+    @reservations = @user.reservations
   end
 end

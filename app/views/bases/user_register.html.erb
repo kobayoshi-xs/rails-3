@@ -1,0 +1,38 @@
+<div class = "room-register">
+
+  <h3>ルーム情報登録</h3>
+
+  <%= form_with(model: @item, method: :post, local: true) do |f| %>
+    <ul>
+      <div class = "field">
+        <li><%= f.label :roomname, "ルーム名" %></li>
+        <li><%= f.text_field :roomname %></li>
+      </div>
+
+      <div class = "field">
+        <li><%= f.label :introduction, "ルーム紹介" %></li>
+        <li><%= f.text_area :introduction %></li>
+      </div>
+
+      <div class = "field">
+        <li><%= f.label :cost, "料金" %></li>
+        <li><%= f.text_field :cost %></li>
+      </div>
+
+      <div class = "field">
+        <li><%= f.label :address, "住所" %></li>
+        <li><%= f.text_field :address %></li>
+      </div>
+
+      <div class = "field">
+        <li><%= f.label :image, "ルーム画像" %></li>
+        <li><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></li>
+      </div>
+
+      
+
+      <%= f.hidden_field :user_id, value: @user.id  %>
+
+      <div class = "field_submit"><%= f.submit "登録" %></div>
+    </ul>
+  <% end %>

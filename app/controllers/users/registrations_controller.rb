@@ -29,8 +29,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
     if current_user == @user
       if @user.update(params.require(:user).permit(:email, :password, :password_confirmation, :current_password))
+        sign_in(current_user, bypass: true)
         flash[:notice]="ユーザーのパスワードを変更しました"
-        redirect_to "bases"
+        redirect_to basis_path(current_user)
       else
         render :edit
       end
@@ -38,7 +39,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to "bases"
     end
   end
-
   # DELETE /resource
   # def destroy
   #   super
@@ -57,12 +57,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password, :password_confirmation, :current_password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password, :password_confirmation, :current_password, :roomname, :introduction, :cost, :address])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute, :nickname, :email, :password, :password_confirmation, :current_password, :roomname, :introduction, :cost, :address])
   end
 
   # The path used after sign up.

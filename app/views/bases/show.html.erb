@@ -6,9 +6,9 @@
     <h2>アカウント</h2>
     <ul>
       <li>メールアドレス :<%= current_user.email %></li>
-      <li>パスワード :<%= current_user.encrypted_password %></li>
+      <li>パスワード : *********</li>
     </ul>
 
-    <h3><%= link_to "更新", :edit_user_registration %></h3>
+    <h3><%= link_to "更新", edit_user_registration_path %></h3>
   </div>
 </div>
